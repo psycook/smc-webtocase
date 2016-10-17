@@ -17,6 +17,10 @@ app.get('/webtocase', function(request, response) {
   response.render('pages/webtocase');
 });
 
+app.get('/thanks', function(request, response) {
+  response.render('pages/thankyou');
+});
+
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
