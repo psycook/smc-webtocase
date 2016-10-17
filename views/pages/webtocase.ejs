@@ -13,8 +13,8 @@
                 <h1>Web to Case</h1>
                 <p>Please use the form below to submit your case</p>
                 <form action="https://www.salesforce.com/servlet/servlet.WebToCase?encoding=UTF-8" method="POST">
-                    <input type=hidden name="orgid" value="00D30000001HL7W">
-                    <input type=hidden name="retURL" value="https://ul-demo.herokuapp.com/thanks">
+                    <input type=hidden id="orgid" name="orgid" value="00D30000001HL7W">
+                    <input type=hidden id="retURL" name="retURL" value="https://ul-demo.herokuapp.com/thanks">
 
                     <div class="form-group row">
                         <label for="name" class="col-xs-2 col-form-label">Contact Name</label>
@@ -37,12 +37,12 @@
                     <div class="form-group row">
                         <label for="priority" class="col-xs-2 col-form-label">Priority</label>
                         <div class="col-xs-10">
-                          <select class="form-control" id="priority" name="priority">
-                            <option value="" selected>--None--</option>
-                            <option value="High">High</option>
-                            <option value="Medium">Medium</option>
-                            <option value="Low">Low</option>
-                          </select>
+                            <select class="form-control" id="priority" name="priority">
+                                <option value="" selected>--None--</option>
+                                <option value="High">High</option>
+                                <option value="Medium">Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
                         </div>
                     </div>
                     <input type="hidden" id="external" name="external" value="1" />
@@ -55,5 +55,16 @@
                 Thank you for using the web to case service.
             </div>
         </div>
-      </body>
+        <script>
+            function setRetUrl() {
+                var baseUrl = window.location;
+                var redirectUrl = baseUrl .protocol + "//" + baseUrl.host + "/thanks";
+                var redirectInput = document.getElementById('retURL');
+                redirectInput.value = redirectUrl;
+                alert("Set Ret URL " + redirectInput.name + " to " + redirectUrl);
+            }
+            window.onload = setRetUrl;
+        </script>
+</body>
+
 </html>
